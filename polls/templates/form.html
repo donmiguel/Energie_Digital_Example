@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+
+    {% if inputFirstName == "" %}
+        <h1>Example Form</h1>
+    {% else %}
+        <h1>Hallo {{ inputFirstName }} - Example Form</h1>
+    {% endif %}
+
+    <div>
+        <label for="firstname" style="font-size: 30px; color: #003cff">First Name</label>
+        <input type="text" id="firstname" name="first">
+
+        <br>
+        <br>
+
+        <label for="secondname">Second Name</label>
+        <input type="text" id="secondname" name="second">
+    </div>
+
+    <div>
+        <p>Size:</p>
+
+        <div>
+            <input type="radio" id="huey" name="size" value="large"
+                   checked>
+            <label for="huey">Large</label>
+        </div>
+
+        <div>
+            <input type="radio" id="dewey" name="size" value="medium">
+            <label for="dewey">Medium</label>
+        </div>
+
+        <div>
+            <input type="radio" id="louie" name="size" value="small">
+            <label for="louie">Small</label>
+        </div>
+    </div>
+
+    <label for="cars">Choose a car:</label>
+
+    <select name="cars" id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <h1>Please select</h1>
+    <label for="size">Select Size</label>
+    <select id="size">
+        <option value="Large">Large</option>
+        <option value="Medium">Medium</option>
+        <option value="Small">Small</option>
+    </select>
+
+    <input type="submit" value="Buy Now!">
+</form>
+
+</body>
+</html>
