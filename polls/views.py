@@ -6,11 +6,29 @@ from django.template import loader
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from polls.models import DataPoint
+
 def test(request):
     return HttpResponse("test")
 
 def index(request):
     firstName = ""
+
+    points = DataPoint.objects.all()
+
+    for point in points:
+        print(point.id, point.x, point.y)
+
+    #examples of queries
+    singleDataPoint = DataPoint.objects.get(id=1)
+    pointsFiltered = DataPoint.objects.filter(x=0)
+
+    newDataPoint = DataPoint()
+    newDataPoint.x = 12
+    newDataPoint.y = 13
+    newDataPoint.save()
+
+    #template = loader.get_template('polls/index.html'
 
     if request.POST:
         firstName = request.POST['first']
@@ -18,6 +36,9 @@ def index(request):
         #return render(request, 'result.html', { 'inputFirstName' : firstName })
 
     return render(request, 'form.html', { 'inputFirstName' : firstName })
+
+
+
 
 def login(request):
     if request.POST:
